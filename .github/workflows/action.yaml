@@ -1,4 +1,5 @@
-name: Deploy my Lambda
+name: Deploy my Lambda Function
+# trigger on all push events to main branch
 on: 
   push:
     branches:
@@ -22,9 +23,9 @@ jobs:
      - name: Create zip bundle
        run: |
            cd function
-           zip -r ../${{ github.sha}}.zip .
-     - name: Archieve artifact
-       uses: action/upload-artifact@v2
+           zip -r ../${{ github.sha }}.zip .
+     - name: Archive artifact
+       uses: actions/upload-artifact@v2
        with: 
          name: zipped-bundle
          path: ${{ github.sha}}.zip
